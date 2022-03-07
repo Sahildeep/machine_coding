@@ -10,4 +10,6 @@ public interface ScoreCardHandler {
 
 	String getMatchResult(@NonNull final String id) throws MatchDoesNotExistException;
 
+	String getOverRecords(@NonNull final String matchId) throws MatchDoesNotExistException;
+
 }

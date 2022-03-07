@@ -92,6 +92,7 @@ public class CricketApplication {
 						}
 					}
 					System.out.println(scoreCardHandler.getScoreCard(match.getId()));
+					System.out.println(scoreCardHandler.getOverRecords(match.getId()));
 					if (isAllOut || isWon) {
 						break;
 					}

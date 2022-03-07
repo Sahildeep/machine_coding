@@ -2,6 +2,7 @@ package com.phonepe.cricket.model.match;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import com.phonepe.cricket.factory.Ball;
 
@@ -49,6 +50,36 @@ public class Over {
 
 	public boolean isFinished() {
 		return balls.size() - illegalDeliveries == 6;
+	}
+
+	public int getDotBalls() {
+		int dotBalls = 0;
+		for (final Ball ball : this.getBalls()) {
+			if (Objects.nonNull(ball.getRun()) && ball.getRun().getNumberOfRuns() == 0) {
+				dotBalls++;
+			}
+		}
+		return dotBalls;
+	}
+
+	public int getWickets() {
+		int wickets = 0;
+		for (final Ball ball : this.getBalls()) {
+			if (Objects.nonNull(ball.getWicket())) {
+				wickets++;
+			}
+		}
+		return wickets;
+	}
+
+	public int getRunsConceded() {
+		int runs = this.getIllegalDeliveries();
+		for (final Ball ball : this.getBalls()) {
+			if (Objects.nonNull(ball.getRun())) {
+				runs += ball.getRun().getNumberOfRuns();
+			}
+		}
+		return runs;
 	}
 
 }
